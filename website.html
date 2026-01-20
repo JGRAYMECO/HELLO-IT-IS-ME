@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Joanne E. Gray - Digital Technology Policy & Governance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --paper: #faf9f6;
+            --accent: #b8860b;
+            --accent-light: #d4af37;
+            --shadow: rgba(0, 0, 0, 0.08);
+            --border: rgba(0, 0, 0, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Pro', serif;
+            background-color: var(--paper);
+            color: var(--ink);
+            line-height: 1.7;
+            font-size: 18px;
+            overflow-x: hidden;
+        }
+
+        /* Animated background accent */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            right: -20%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(184, 134, 11, 0.03) 0%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-30px, 30px) scale(1.1); }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            padding: 4rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            animation: fadeIn 1.2s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .name {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+        }
+
+        .title {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 2rem 0;
+            opacity: 0;
+            animation: fadeIn 1.2s ease 0.2s forwards;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.85rem;
+            text-decoration: none;
+            color: var(--ink);
+            letter-spacing: 0.05em;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content Sections */
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            animation: fadeIn 1.2s ease forwards;
+        }
+
+        section:nth-child(1) { animation-delay: 0.4s; }
+        section:nth-child(2) { animation-delay: 0.5s; }
+        section:nth-child(3) { animation-delay: 0.6s; }
+        section:nth-child(4) { animation-delay: 0.7s; }
+        section:nth-child(5) { animation-delay: 0.8s; }
+
+        .section-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.3;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            max-width: 65ch;
+        }
+
+        /* Animated list */
+        .value-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .value-list li {
+            position: relative;
+            padding-left: 2.5rem;
+            margin-bottom: 1rem;
+            max-width: 65ch;
+        }
+
+        .value-list li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 1.2rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .value-list li:nth-child(1)::before { animation-delay: 0s; }
+        .value-list li:nth-child(2)::before { animation-delay: 0.4s; }
+        .value-list li:nth-child(3)::before { animation-delay: 0.8s; }
+        .value-list li:nth-child(4)::before { animation-delay: 1.2s; }
+        .value-list li:nth-child(5)::before { animation-delay: 1.6s; }
+
+        @keyframes pulse {
+            0%, 100% { 
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% { 
+                transform: scale(1.3);
+                opacity: 0.6;
+            }
+        }
+
+        /* About section with headshot */
+        .about-intro {
+            display: grid;
+            grid-template-columns: 1fr 200px;
+            gap: 3rem;
+            align-items: start;
+            margin-bottom: 2rem;
+        }
+
+        .about-text {
+            max-width: 65ch;
+        }
+
+        .headshot {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+            box-shadow: 0 4px 20px var(--shadow);
+            position: sticky;
+            top: 2rem;
+        }
+
+        /* Book Highlight */
+        .book-feature {
+            background: linear-gradient(135deg, #f8f6f0 0%, #faf9f6 100%);
+            border-left: 3px solid var(--accent);
+            padding: 2.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 20px var(--shadow);
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .book-cover {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .book-cover:hover {
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        .book-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .book-feature::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 150px;
+            color: rgba(184, 134, 11, 0.08);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .book-feature h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .book-feature .subtitle {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .book-feature p {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.9rem 2rem;
+            background: var(--ink);
+            color: var(--paper);
+            text-decoration: none;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border: 2px solid var(--ink);
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--ink);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        /* Research Areas */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .research-item {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .research-item:hover {
+            border-color: var(--accent);
+            box-shadow: 0 8px 20px var(--shadow);
+            transform: translateY(-4px);
+        }
+
+        .research-item h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--accent);
+        }
+
+        .research-item p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Contact */
+        .contact-info {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .contact-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+        }
+
+        .contact-link {
+            color: var(--ink);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 2px;
+        }
+
+        .contact-link:hover {
+            color: var(--accent);
+            border-bottom-color: var(--ink);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+            opacity: 0;
+            animation: fadeIn 1.2s ease 0.9s forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            header {
+                padding: 3rem 0 2rem;
+            }
+
+            .name {
+                font-size: 2.5rem;
+            }
+
+            nav ul {
+                gap: 1.5rem;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+
+            .about-intro {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .headshot {
+                width: 150px;
+                height: 150px;
+                margin: 0 auto;
+                display: block;
+                position: static;
+            }
+
+            .book-feature {
+                padding: 2rem 1.5rem;
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .book-cover {
+                max-width: 250px;
+                margin: 0 auto;
+            }
+
+            .research-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="name">Dr. Joanne E. Gray</h1>
+            <p class="title">Digital Technology Policy & Governance</p>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#book">New Book</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section id="about">
+                <div class="section-label">About</div>
+                <h2>The digital world is complex. I can help you make sense of it.</h2>
+                <div class="about-intro">
+                    <div class="about-text">
+                        <p>
+                            As a digital technology researcher, communicator, and educator, I empower individuals, organizations, and communities to understand and navigate the technologies reshaping modern life.
+                        </p>
+                        <p>
+                            I excel at making complex systems easy to understand—from social media and algorithms to artificial intelligence, virtual reality, and robotics. I work with clients to enhance digital knowledge and capabilities, enabling informed leadership, creating cultures of trust, and building resilience.
+                        </p>
+                    </div>
+                    <img src="headshot.jpg" alt="Dr. Joanne E. Gray" class="headshot">
+                </div>
+                <p><strong>When you work with me you get:</strong></p>
+                <ul class="value-list">
+                    <li>Academic rigour combined with practical relevance</li>
+                    <li>Deep interdisciplinary expertise across law, policy, economics, media, and communication</li>
+                    <li>Clear, engaging communication for technical and non-technical audiences</li>
+                    <li>Experience working with government, industry, and civil society</li>
+                    <li>A trusted public voice on digital society issues</li>
+                </ul>
+                <h2 style="margin-top: 3rem;">Background</h2>
+                <p>
+                    I'm Chair of Discipline for Media & Communications at The University of Sydney and Editor-in-Chief of the Q1 journal <em>Policy & Internet</em>.
+                </p>
+                <p>
+                    I completed my doctoral thesis under the supervision of Professor Brian Fitzgerald, a pioneer of internet law in Australia, and my postdoctoral research fellowship with Professor Nicolas Suzor, a global leader in platform governance studies. In addition to my PhD, I hold a Master of International Law and Bachelor of Commerce (First Class Honours, Political Economy).
+                </p>
+                <p>
+                    For more about me visit <a href="https://www.linkedin.com/in/joanne-gray" class="contact-link" target="_blank">LinkedIn →</a> or my <a href="https://www.sydney.edu.au/arts/about/our-people/academic-staff/j-gray.html" class="contact-link" target="_blank">University of Sydney profile →</a>
+                </p>
+            </section>
+
+            <section id="book">
+                <div class="section-label">New Book</div>
+                <div class="book-feature">
+                    <img src="book-cover.png" alt="Big Tech Dynasties book cover" class="book-cover">
+                    <div class="book-content">
+                        <h3>Big Tech Dynasties</h3>
+                        <p class="subtitle">Re-thinking the power, spectacle and downfall of Google, Apple, Microsoft, Meta and Amazon</p>
+                        <p>
+                            <em>Big Tech Dynasties</em> (Bloomsbury, 2026) offers a new way of understanding the power of Apple, Amazon, Google, Meta, and Microsoft. The book argues that while each company may be a product of platform capitalism, they are also historically familiar.
+                        </p>
+                        <p>
+                            Big Tech is familiar, because it is dynastic. And because it is dynastic, Big Tech is inherently undemocratic. <em>Big Tech Dynasties</em> considers how we arrived at this moment and the threat to democracy posed by concentrated private power. The book also explains how democracies are beginning—unevenly and imperfectly—to push back, drawing particular attention to Australia's emergence as an unlikely leader in democratic oversight of Big Tech.
+                        </p>
+                        <a href="https://www.bloomsbury.com" class="cta-button">Forthcoming 2026</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="research">
+                <div class="section-label">Research</div>
+                <h2>My research examines how digital platforms, algorithms, and emerging technologies shape power, governance, culture, and democracy.</h2>
+                <p>I focus on how law, policy, design, and economic structures interact—and on how public-interest governance can respond to concentrated digital power, online harms, and automated systems. My work combines legal analysis, political economy, media studies, and empirical digital research, and is widely cited in academic, policy, and public debates.</p>
+                <div class="research-grid">
+                    <div class="research-item">
+                        <h3>Platform Governance & Digital Regulation</h3>
+                        <p>Examining regulatory frameworks, democratic oversight, and accountability mechanisms for digital platforms and concentrated tech power.</p>
+                    </div>
+                    <div class="research-item">
+                        <h3>Artificial Intelligence & Automated Systems</h3>
+                        <p>Understanding the governance challenges posed by AI systems and developing public-interest approaches to algorithmic accountability.</p>
+                    </div>
+                    <div class="research-item">
+                        <h3>Online Harms, Safety & Misinformation</h3>
+                        <p>Analyzing the causes and responses to online harms, with attention to platform design, content moderation, and regulatory interventions.</p>
+                    </div>
+                    <div class="research-item">
+                        <h3>Virtual & Immersive Technologies</h3>
+                        <p>Exploring governance issues in VR/XR environments and the social implications of immersive digital spaces.</p>
+                    </div>
+                    <div class="research-item">
+                        <h3>Digital Sovereignty & Infrastructure</h3>
+                        <p>Examining questions of national autonomy, digital infrastructure, and the geopolitics of technology governance.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="publications">
+                <div class="section-label">Publications</div>
+                <h2>Research & Writing</h2>
+                <p>
+                    My research has been published in leading academic journals and reaches diverse audiences through policy briefs, media commentary, and public scholarship. I combine rigorous academic analysis with accessible communication to inform public debate and policy development.
+                </p>
+                <p style="margin-top: 2rem;">
+                    For research publications visit <a href="https://scholar.google.com/citations?user=UfW7GFQAAAAJ&hl=en&oi=ao" class="contact-link" target="_blank">Google Scholar →</a>
+                </p>
+                <p>
+                    For commentary visit <a href="https://theconversation.com/profiles/joanne-gray-873764/articles" class="contact-link" target="_blank">The Conversation →</a>
+                </p>
+                <p>
+                    For general musings visit <a href="https://medium.com/@jograycy7" class="contact-link" target="_blank">Medium →</a>
+                </p>
+            </section>
+
+            <section id="contact">
+                <div class="section-label">Contact</div>
+                <h2>Get in Touch</h2>
+                <p>
+                    Get in touch via <a href="mailto:j.gray@sydney.edu.au" class="contact-link">j.gray@sydney.edu.au</a>
+                </p>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Dr. Joanne E. Gray. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
