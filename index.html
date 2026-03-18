@@ -201,27 +201,11 @@
         }
 
         /* varied grid spans for visual interest */
-        .gallery-item:nth-child(1) { grid-column: span 5; grid-row: span 2; }
-        .gallery-item:nth-child(2) { grid-column: span 7; }
+        .gallery-item:nth-child(1) { grid-column: span 7; }
+        .gallery-item:nth-child(2) { grid-column: span 5; grid-row: span 2; }
         .gallery-item:nth-child(3) { grid-column: span 4; }
         .gallery-item:nth-child(4) { grid-column: span 3; }
-        .gallery-item:nth-child(5) { grid-column: span 4; }
-        .gallery-item:nth-child(6) { grid-column: span 6; }
-        .gallery-item:nth-child(7) { grid-column: span 6; }
-
-        .gallery-item .art-placeholder {
-            width: 100%;
-            aspect-ratio: 4/3;
-            display: block;
-            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .gallery-item:nth-child(1) .art-placeholder { aspect-ratio: 3/4; }
-        .gallery-item:nth-child(3) .art-placeholder { aspect-ratio: 3/4; }
-
-        .gallery-item:hover .art-placeholder {
-            transform: scale(1.04);
-        }
+        .gallery-item:nth-child(5) { grid-column: span 7; }
 
         .gallery-item-info {
             padding: 1rem 0 0.25rem;
@@ -241,14 +225,20 @@
             margin-top: 0.2rem;
         }
 
-        /* art placeholder gradients — feel intentional, like actual works */
-        .art-a { background: linear-gradient(135deg, #d4c5b0 0%, #a8997e 40%, #7a6e5f 100%); }
-        .art-b { background: linear-gradient(160deg, #c8d8d0 0%, #9ab5ad 50%, #6e938a 100%); }
-        .art-c { background: linear-gradient(110deg, #e8ddd0 0%, #c9b89a 60%, #b0a080 100%); }
-        .art-d { background: linear-gradient(145deg, #d8ccc0 0%, #b5a896 100%); }
-        .art-e { background: linear-gradient(120deg, #cfd8dc 0%, #b0bec5 50%, #90a4ae 100%); }
-        .art-f { background: linear-gradient(160deg, #e0d6cc 0%, #c4b5a5 60%, #a89888 100%); }
-        .art-g { background: linear-gradient(130deg, #d8d0c8 0%, #b8b0a8 100%); }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.04);
+        }
+
+        /* art placeholder — for slots awaiting photography */
+        .art-placeholder { background: var(--lightest); }
 
         /* ── ABOUT ── */
         #about {
@@ -557,9 +547,9 @@
 
     <!-- HERO -->
     <section class="hero">
-        <p class="hero-eyebrow">Visual Artist — Painting &amp; Sculpture</p>
+        <p class="hero-eyebrow">Visual Artist — Meanjin / Brisbane</p>
         <h1 class="hero-name">Shari<br><em>O'Dwyer</em></h1>
-        <p class="hero-tagline">Works exploring materiality, memory, and the thresholds between the tangible and the ephemeral.</p>
+        <p class="hero-tagline">Painting, installation, and mixed media — works that test the edges of material, place, and everyday life.</p>
         <span class="hero-scroll">Scroll</span>
     </section>
 
@@ -570,59 +560,45 @@
             <ul class="gallery-filters">
                 <li><button class="active">All</button></li>
                 <li><button>Painting</button></li>
-                <li><button>Sculpture</button></li>
+                <li><button>Installation</button></li>
                 <li><button>Mixed Media</button></li>
             </ul>
         </div>
 
         <div class="gallery-grid">
             <div class="gallery-item fade-up">
-                <div class="art-placeholder art-a"></div>
+                <img src="work-5.jpg" alt="Cane, installation view">
                 <div class="gallery-item-info">
-                    <p class="gallery-item-title">Sediment I</p>
-                    <p class="gallery-item-meta">Oil on linen · 2024 · 180 × 120 cm</p>
+                    <p class="gallery-item-title">Cane</p>
+                    <p class="gallery-item-meta">Installation · 2024–2026</p>
                 </div>
             </div>
             <div class="gallery-item fade-up">
-                <div class="art-placeholder art-b"></div>
+                <img src="work-2.jpg" alt="Installation view with paintings and rope">
                 <div class="gallery-item-info">
-                    <p class="gallery-item-title">Threshold</p>
-                    <p class="gallery-item-meta">Marble &amp; cast bronze · 2024 · 60 × 40 × 30 cm</p>
+                    <p class="gallery-item-title">Searching through an ocean of tidal waves for you</p>
+                    <p class="gallery-item-meta">Installation · 2023</p>
                 </div>
             </div>
             <div class="gallery-item fade-up">
-                <div class="art-placeholder art-c"></div>
+                <img src="work-1.jpg" alt="Cane sculpture with painting below">
                 <div class="gallery-item-info">
-                    <p class="gallery-item-title">Drift II</p>
-                    <p class="gallery-item-meta">Encaustic on panel · 2023 · 90 × 60 cm</p>
+                    <p class="gallery-item-title">Cane (detail)</p>
+                    <p class="gallery-item-meta">Painting &amp; mixed media · 2024</p>
                 </div>
             </div>
             <div class="gallery-item fade-up">
-                <div class="art-placeholder art-d"></div>
+                <img src="work-4.jpg" alt="Floor installation with doormats">
                 <div class="gallery-item-info">
-                    <p class="gallery-item-title">After the Rain</p>
-                    <p class="gallery-item-meta">Mixed media · 2023 · 45 × 35 cm</p>
+                    <p class="gallery-item-title">Paradise Gloss (detail)</p>
+                    <p class="gallery-item-meta">Mixed media installation · 2024</p>
                 </div>
             </div>
             <div class="gallery-item fade-up">
-                <div class="art-placeholder art-e"></div>
+                <img src="work-3.jpg" alt="Yoke installation">
                 <div class="gallery-item-info">
-                    <p class="gallery-item-title">Still Ground</p>
-                    <p class="gallery-item-meta">Oil on canvas · 2023 · 150 × 100 cm</p>
-                </div>
-            </div>
-            <div class="gallery-item fade-up">
-                <div class="art-placeholder art-f"></div>
-                <div class="gallery-item-info">
-                    <p class="gallery-item-title">Vessel No. 4</p>
-                    <p class="gallery-item-meta">Ceramic &amp; found material · 2022 · 55 × 20 × 20 cm</p>
-                </div>
-            </div>
-            <div class="gallery-item fade-up">
-                <div class="art-placeholder art-g"></div>
-                <div class="gallery-item-info">
-                    <p class="gallery-item-title">Sediment II</p>
-                    <p class="gallery-item-meta">Oil on linen · 2022 · 200 × 140 cm</p>
+                    <p class="gallery-item-title">Yoke</p>
+                    <p class="gallery-item-meta">Installation · 2025</p>
                 </div>
             </div>
         </div>
@@ -631,31 +607,26 @@
     <!-- ABOUT -->
     <section id="about">
         <div class="about-left fade-up">
-            <img src="headshot.jpg" alt="Shari O'Dwyer in her studio" class="about-portrait">
-            <p class="about-caption">Studio, Sydney — 2024</p>
+            <img src="work-2.jpg" alt="Installation view — Searching through an ocean of tidal waves for you, 2023" class="about-portrait">
+            <p class="about-caption">Installation view, 2023</p>
         </div>
         <div class="about-right">
             <p class="section-label">About</p>
-            <h2>Making sense of the world through surface, weight, and time.</h2>
-            <p>Shari O'Dwyer is a Sydney-based visual artist whose practice spans painting, sculpture, and mixed-media installation. Her work investigates the material traces of experience — how memory, landscape, and the body leave marks on objects and surfaces.</p>
-            <p>Drawing on both European painterly traditions and the textures of the Australian environment, O'Dwyer's paintings are built through layered processes of application and erasure. Her sculptural work often incorporates found and natural materials, testing the boundary between the made and the found.</p>
-            <p>O'Dwyer holds a Bachelor of Fine Arts (First Class Honours) from the National Art School, Sydney, and a Master of Fine Arts from the Royal College of Art, London. Her work has been exhibited across Australia, the United Kingdom, and Europe.</p>
+            <h2>Painting, installation, and mixed media from Meanjin.</h2>
+            <p>Shari O'Dwyer is a Meanjin/Brisbane-based visual artist working across painting, installation, and mixed media. Her practice draws on the textures and materials of everyday life — found objects, domestic goods, and vernacular imagery — assembled into environments that are at once familiar and strange.</p>
+            <p>O'Dwyer's work has been shown widely across Queensland and beyond, including at the Rockhampton Museum of Art, Hervey Bay Regional Gallery, and numerous independent spaces in Brisbane. Her exhibitions often engage site, material accumulation, and the social life of objects.</p>
             <div class="about-details">
                 <div>
                     <p class="about-detail-label">Based in</p>
-                    <p class="about-detail-value">Sydney, Australia</p>
+                    <p class="about-detail-value">Meanjin / Brisbane</p>
                 </div>
                 <div>
-                    <p class="about-detail-label">Education</p>
-                    <p class="about-detail-value">RCA, London / NAS, Sydney</p>
+                    <p class="about-detail-label">Affiliated with</p>
+                    <p class="about-detail-value">Griffith University</p>
                 </div>
                 <div>
                     <p class="about-detail-label">Practice</p>
-                    <p class="about-detail-value">Painting &amp; Sculpture</p>
-                </div>
-                <div>
-                    <p class="about-detail-label">Represented by</p>
-                    <p class="about-detail-value">Available on inquiry</p>
+                    <p class="about-detail-value">Painting, Installation, Mixed Media</p>
                 </div>
             </div>
         </div>
@@ -666,34 +637,69 @@
         <p class="section-label">Exhibitions</p>
         <ul class="exhibitions-list">
             <li class="exhibition-item fade-up">
+                <span class="exhibition-year">2026</span>
+                <span class="exhibition-title">Cane</span>
+                <span class="exhibition-venue">Rockhampton Museum of Art</span>
+            </li>
+            <li class="exhibition-item fade-up">
                 <span class="exhibition-year">2025</span>
-                <span class="exhibition-title">Between Ground and Air</span>
-                <span class="exhibition-venue">Chalk Horse Gallery, Sydney</span>
+                <span class="exhibition-title">holemtaet hemia (hold this / hold this tightly)</span>
+                <span class="exhibition-venue">Somerset Regional Art Gallery</span>
+            </li>
+            <li class="exhibition-item fade-up">
+                <span class="exhibition-year">2025</span>
+                <span class="exhibition-title">Yoke</span>
+                <span class="exhibition-venue">Webb Gallery, QCAD, Brisbane</span>
             </li>
             <li class="exhibition-item fade-up">
                 <span class="exhibition-year">2024</span>
-                <span class="exhibition-title">Sediment (Solo)</span>
-                <span class="exhibition-venue">Sullivan+Strumpf, Sydney</span>
+                <span class="exhibition-title">Block</span>
+                <span class="exhibition-venue">Vacant Assembly, West End, Brisbane</span>
             </li>
             <li class="exhibition-item fade-up">
                 <span class="exhibition-year">2024</span>
-                <span class="exhibition-title">Material Witness</span>
-                <span class="exhibition-venue">Saatchi Gallery, London</span>
+                <span class="exhibition-title">Paradise Gloss</span>
+                <span class="exhibition-venue">Side Gallery, Red Hill, Brisbane</span>
+            </li>
+            <li class="exhibition-item fade-up">
+                <span class="exhibition-year">2024</span>
+                <span class="exhibition-title">Beyond this Place</span>
+                <span class="exhibition-venue">White Box Gallery, QCAD, Brisbane</span>
+            </li>
+            <li class="exhibition-item fade-up">
+                <span class="exhibition-year">2024</span>
+                <span class="exhibition-title">Both Sides of Here</span>
+                <span class="exhibition-venue">Project Gallery, QCAD, Brisbane</span>
+            </li>
+            <li class="exhibition-item fade-up">
+                <span class="exhibition-year">2024</span>
+                <span class="exhibition-title">Cane <em style="font-style:normal; font-size:0.75rem; color:#555;">(Invited)</em></span>
+                <span class="exhibition-venue">Hervey Bay Regional Gallery</span>
             </li>
             <li class="exhibition-item fade-up">
                 <span class="exhibition-year">2023</span>
-                <span class="exhibition-title">New Australian Painting</span>
-                <span class="exhibition-venue">Museum of Contemporary Art, Sydney</span>
+                <span class="exhibition-title">Searching through an ocean of tidal waves for you</span>
+                <span class="exhibition-venue">Wreckers Artspace, Brisbane</span>
             </li>
             <li class="exhibition-item fade-up">
-                <span class="exhibition-year">2022</span>
-                <span class="exhibition-title">Threshold States</span>
-                <span class="exhibition-venue">RCA Galleries, London</span>
+                <span class="exhibition-year">2023</span>
+                <span class="exhibition-title">Suburban Abstract</span>
+                <span class="exhibition-venue">Kepk Gallery, Yeronga, Brisbane</span>
             </li>
             <li class="exhibition-item fade-up">
-                <span class="exhibition-year">2021</span>
-                <span class="exhibition-title">Degrees of Drift</span>
-                <span class="exhibition-venue">Nanda\Hobbs, Sydney</span>
+                <span class="exhibition-year">2023</span>
+                <span class="exhibition-title">Echo</span>
+                <span class="exhibition-venue">Side Gallery, Red Hill, Brisbane</span>
+            </li>
+            <li class="exhibition-item fade-up">
+                <span class="exhibition-year">2023</span>
+                <span class="exhibition-title">Block</span>
+                <span class="exhibition-venue">Vacant Assembly, West End, Brisbane</span>
+            </li>
+            <li class="exhibition-item fade-up">
+                <span class="exhibition-year">2019</span>
+                <span class="exhibition-title">Ctrl, Alt, Del</span>
+                <span class="exhibition-venue">Outerspace ARI, West End, Brisbane</span>
             </li>
         </ul>
     </section>
@@ -704,10 +710,10 @@
             <h2>Let's<br><em>connect.</em></h2>
         </div>
         <div class="contact-right fade-up">
-            <p>For studio visits, commissions, exhibition inquiries, or press, please get in touch.</p>
+            <p>For exhibition inquiries, commissions, or general correspondence, please get in touch.</p>
             <div class="contact-links">
-                <a href="mailto:studio@shariiodwyer.com" class="contact-link">studio@shariiodwyer.com</a>
-                <a href="https://www.instagram.com/" class="contact-link" target="_blank" rel="noopener">Instagram</a>
+                <a href="mailto:shari.odwyer@griffithuni.edu.au" class="contact-link">shari.odwyer@griffithuni.edu.au</a>
+                <a href="https://www.instagram.com/shari_odwyer/" class="contact-link" target="_blank" rel="noopener">@shari_odwyer on Instagram</a>
             </div>
         </div>
     </section>
@@ -715,7 +721,7 @@
     <!-- FOOTER -->
     <footer>
         <span>&copy; 2026 Shari O'Dwyer</span>
-        <span>Sydney, Australia</span>
+        <span>Meanjin / Brisbane</span>
     </footer>
 
     <script>
