@@ -3,586 +3,749 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Joanne E. Gray - Digital Technology Policy & Governance</title>
+    <title>Shari O'Dwyer — Artist</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --ink: #1a1a1a;
-            --paper: #faf9f6;
-            --accent: #b8860b;
-            --accent-light: #d4af37;
-            --shadow: rgba(0, 0, 0, 0.08);
-            --border: rgba(0, 0, 0, 0.12);
-        }
-
-        * {
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --white: #ffffff;
+            --off-white: #f8f8f6;
+            --ink: #111111;
+            --mid: #888888;
+            --light: #dddddd;
+            --lightest: #f2f2f0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Crimson Pro', serif;
-            background-color: var(--paper);
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            background: var(--white);
             color: var(--ink);
+            font-size: 15px;
             line-height: 1.7;
-            font-size: 18px;
             overflow-x: hidden;
         }
 
-        /* Animated background accent */
-        body::before {
-            content: '';
-            position: fixed;
-            top: -50%;
-            right: -20%;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(184, 134, 11, 0.03) 0%, transparent 70%);
-            animation: float 20s ease-in-out infinite;
-            z-index: -1;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(-30px, 30px) scale(1.1); }
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Header */
-        header {
-            padding: 4rem 0 3rem;
-            border-bottom: 1px solid var(--border);
-            opacity: 0;
-            animation: fadeIn 1.2s ease forwards;
-        }
-
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-
-        .name {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 300;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-            margin-bottom: 0.5rem;
-        }
-
-        .title {
-            font-family: 'DM Mono', monospace;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--accent);
-            font-weight: 500;
-            line-height: 1.6;
-        }
-
-        /* Navigation */
+        /* ── NAV ── */
         nav {
-            padding: 2rem 0;
-            opacity: 0;
-            animation: fadeIn 1.2s ease 0.2s forwards;
-        }
-
-        nav ul {
-            list-style: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
             display: flex;
-            gap: 2.5rem;
-            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 3rem;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s;
         }
 
-        nav a {
-            font-family: 'DM Mono', monospace;
-            font-size: 0.85rem;
+        nav.scrolled {
+            border-color: var(--light);
+        }
+
+        .nav-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            font-weight: 300;
+            letter-spacing: 0.04em;
             text-decoration: none;
             color: var(--ink);
-            letter-spacing: 0.05em;
-            position: relative;
-            transition: color 0.3s ease;
         }
 
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--accent);
-            transition: width 0.3s ease;
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
         }
 
-        nav a:hover {
-            color: var(--accent);
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* Main Content Sections */
-        section {
-            padding: 4rem 0;
-            border-bottom: 1px solid var(--border);
-            opacity: 0;
-            animation: fadeIn 1.2s ease forwards;
-        }
-
-        section:nth-child(1) { animation-delay: 0.4s; }
-        section:nth-child(2) { animation-delay: 0.5s; }
-        section:nth-child(3) { animation-delay: 0.6s; }
-        section:nth-child(4) { animation-delay: 0.7s; }
-        section:nth-child(5) { animation-delay: 0.8s; }
-
-        .section-label {
-            font-family: 'DM Mono', monospace;
+        .nav-links a {
             font-size: 0.75rem;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-            font-weight: 500;
+            text-decoration: none;
+            color: var(--mid);
+            transition: color 0.25s;
         }
 
-        h2 {
-            font-size: 2rem;
-            font-weight: 400;
-            line-height: 1.3;
+        .nav-links a:hover {
+            color: var(--ink);
+        }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 0 3rem 5rem;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.72rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--mid);
             margin-bottom: 1.5rem;
+        }
+
+        .hero-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(4rem, 10vw, 9rem);
+            font-weight: 300;
+            line-height: 0.95;
             letter-spacing: -0.01em;
         }
 
-        p {
-            margin-bottom: 1.5rem;
-            max-width: 65ch;
+        .hero-name em {
+            font-style: italic;
         }
 
-        /* Animated list */
-        .value-list {
-            list-style: none;
-            padding: 0;
-            margin: 2rem 0;
+        .hero-tagline {
+            margin-top: 2.5rem;
+            font-size: 0.88rem;
+            color: var(--mid);
+            max-width: 36ch;
+            line-height: 1.8;
         }
 
-        .value-list li {
-            position: relative;
-            padding-left: 2.5rem;
-            margin-bottom: 1rem;
-            max-width: 65ch;
-        }
-
-        .value-list li::before {
-            content: '◆';
+        .hero-scroll {
             position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-size: 1.2rem;
-            animation: pulse 2s ease-in-out infinite;
+            bottom: 2.5rem;
+            right: 3rem;
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--light);
+            writing-mode: vertical-lr;
         }
 
-        .value-list li:nth-child(1)::before { animation-delay: 0s; }
-        .value-list li:nth-child(2)::before { animation-delay: 0.4s; }
-        .value-list li:nth-child(3)::before { animation-delay: 0.8s; }
-        .value-list li:nth-child(4)::before { animation-delay: 1.2s; }
-        .value-list li:nth-child(5)::before { animation-delay: 1.6s; }
-
-        @keyframes pulse {
-            0%, 100% { 
-                transform: scale(1);
-                opacity: 1;
-            }
-            50% { 
-                transform: scale(1.3);
-                opacity: 0.6;
-            }
+        /* ── SECTION BASE ── */
+        section {
+            padding: 7rem 3rem;
         }
 
-        /* About section with headshot */
-        .about-intro {
+        .section-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--mid);
+            margin-bottom: 3rem;
+        }
+
+        /* ── WORK / GALLERY ── */
+        #work {
+            background: var(--off-white);
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+        }
+
+        .gallery-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .gallery-filters {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .gallery-filters button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--mid);
+            padding: 0;
+            transition: color 0.25s;
+        }
+
+        .gallery-filters button:hover,
+        .gallery-filters button.active {
+            color: var(--ink);
+        }
+
+        .gallery-grid {
             display: grid;
-            grid-template-columns: 1fr 200px;
-            gap: 3rem;
-            align-items: start;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.25rem;
         }
 
-        .about-text {
-            max-width: 65ch;
-        }
-
-        .headshot {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--accent);
-            box-shadow: 0 4px 20px var(--shadow);
-            position: sticky;
-            top: 2rem;
-        }
-
-        /* Book Highlight */
-        .book-feature {
-            background: linear-gradient(135deg, #f8f6f0 0%, #faf9f6 100%);
-            border-left: 3px solid var(--accent);
-            padding: 2.5rem;
-            margin: 2rem 0;
-            box-shadow: 0 4px 20px var(--shadow);
+        .gallery-item {
             position: relative;
             overflow: hidden;
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 2.5rem;
-            align-items: center;
+            cursor: pointer;
+            background: var(--lightest);
         }
 
-        .book-cover {
+        /* varied grid spans for visual interest */
+        .gallery-item:nth-child(1) { grid-column: span 5; grid-row: span 2; }
+        .gallery-item:nth-child(2) { grid-column: span 7; }
+        .gallery-item:nth-child(3) { grid-column: span 4; }
+        .gallery-item:nth-child(4) { grid-column: span 3; }
+        .gallery-item:nth-child(5) { grid-column: span 4; }
+        .gallery-item:nth-child(6) { grid-column: span 6; }
+        .gallery-item:nth-child(7) { grid-column: span 6; }
+
+        .gallery-item .art-placeholder {
             width: 100%;
-            max-width: 300px;
-            height: auto;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
-            position: relative;
-            z-index: 1;
+            aspect-ratio: 4/3;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        .book-cover:hover {
-            transform: translateY(-5px) scale(1.02);
+        .gallery-item:nth-child(1) .art-placeholder { aspect-ratio: 3/4; }
+        .gallery-item:nth-child(3) .art-placeholder { aspect-ratio: 3/4; }
+
+        .gallery-item:hover .art-placeholder {
+            transform: scale(1.04);
         }
 
-        .book-content {
-            position: relative;
-            z-index: 1;
+        .gallery-item-info {
+            padding: 1rem 0 0.25rem;
         }
 
-        .book-feature::before {
-            content: '"';
-            position: absolute;
-            top: -20px;
-            left: 20px;
-            font-size: 150px;
-            color: rgba(184, 134, 11, 0.08);
-            font-family: Georgia, serif;
-            line-height: 1;
-        }
-
-        .book-feature h3 {
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .book-feature .subtitle {
+        .gallery-item-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            font-weight: 300;
             font-style: italic;
-            color: #555;
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            position: relative;
-            z-index: 1;
         }
 
-        .book-feature p {
-            position: relative;
-            z-index: 1;
+        .gallery-item-meta {
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+            color: var(--mid);
+            margin-top: 0.2rem;
         }
 
-        .cta-button {
-            display: inline-block;
-            margin-top: 1.5rem;
-            padding: 0.9rem 2rem;
-            background: var(--ink);
-            color: var(--paper);
-            text-decoration: none;
-            font-family: 'DM Mono', monospace;
-            font-size: 0.85rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-            border: 2px solid var(--ink);
-            position: relative;
-            z-index: 1;
-        }
+        /* art placeholder gradients — feel intentional, like actual works */
+        .art-a { background: linear-gradient(135deg, #d4c5b0 0%, #a8997e 40%, #7a6e5f 100%); }
+        .art-b { background: linear-gradient(160deg, #c8d8d0 0%, #9ab5ad 50%, #6e938a 100%); }
+        .art-c { background: linear-gradient(110deg, #e8ddd0 0%, #c9b89a 60%, #b0a080 100%); }
+        .art-d { background: linear-gradient(145deg, #d8ccc0 0%, #b5a896 100%); }
+        .art-e { background: linear-gradient(120deg, #cfd8dc 0%, #b0bec5 50%, #90a4ae 100%); }
+        .art-f { background: linear-gradient(160deg, #e0d6cc 0%, #c4b5a5 60%, #a89888 100%); }
+        .art-g { background: linear-gradient(130deg, #d8d0c8 0%, #b8b0a8 100%); }
 
-        .cta-button:hover {
-            background: transparent;
-            color: var(--ink);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px var(--shadow);
-        }
-
-        /* Research Areas */
-        .research-grid {
+        /* ── ABOUT ── */
+        #about {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: start;
+        }
+
+        .about-left {
+            position: sticky;
+            top: 6rem;
+        }
+
+        .about-portrait {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            background: var(--lightest);
+            display: block;
+        }
+
+        .about-caption {
+            font-size: 0.7rem;
+            color: var(--mid);
+            margin-top: 0.75rem;
+            letter-spacing: 0.06em;
+        }
+
+        .about-right h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            font-weight: 300;
+            line-height: 1.3;
+            margin-bottom: 2rem;
+            letter-spacing: -0.01em;
+        }
+
+        .about-right p {
+            color: #444;
+            margin-bottom: 1.5rem;
+            max-width: 52ch;
+        }
+
+        .about-details {
+            margin-top: 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 2rem;
-            margin-top: 2rem;
+            border-top: 1px solid var(--light);
+            padding-top: 2.5rem;
         }
 
-        .research-item {
-            padding: 1.5rem;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-            background: white;
+        .about-detail-label {
+            font-size: 0.68rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--mid);
+            margin-bottom: 0.4rem;
         }
 
-        .research-item:hover {
-            border-color: var(--accent);
-            box-shadow: 0 8px 20px var(--shadow);
-            transform: translateY(-4px);
+        .about-detail-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
         }
 
-        .research-item h3 {
+        /* ── EXHIBITIONS ── */
+        #exhibitions {
+            background: var(--ink);
+            color: var(--white);
+        }
+
+        #exhibitions .section-label {
+            color: #666;
+        }
+
+        .exhibitions-list {
+            list-style: none;
+        }
+
+        .exhibition-item {
+            display: grid;
+            grid-template-columns: 80px 1fr 1fr;
+            gap: 2rem;
+            align-items: baseline;
+            padding: 1.75rem 0;
+            border-bottom: 1px solid #222;
+            transition: opacity 0.25s;
+        }
+
+        .exhibitions-list:hover .exhibition-item {
+            opacity: 0.35;
+        }
+
+        .exhibitions-list:hover .exhibition-item:hover {
+            opacity: 1;
+        }
+
+        .exhibition-year {
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            color: #555;
+        }
+
+        .exhibition-title {
+            font-family: 'Cormorant Garamond', serif;
             font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            color: var(--accent);
+            font-weight: 300;
+            font-style: italic;
         }
 
-        .research-item p {
-            font-size: 0.95rem;
-            line-height: 1.6;
+        .exhibition-venue {
+            font-size: 0.8rem;
+            color: #666;
+            text-align: right;
         }
 
-        /* Contact */
-        .contact-info {
-            display: flex;
-            gap: 3rem;
-            flex-wrap: wrap;
-            margin-top: 2rem;
+        /* ── CONTACT ── */
+        #contact {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+            min-height: 60vh;
         }
 
-        .contact-item {
+        .contact-left h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 300;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .contact-left h2 em {
+            font-style: italic;
+        }
+
+        .contact-right p {
+            color: #555;
+            margin-bottom: 2.5rem;
+            max-width: 40ch;
+        }
+
+        .contact-links {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .contact-label {
-            font-family: 'DM Mono', monospace;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--accent);
+            gap: 1rem;
         }
 
         .contact-link {
-            color: var(--ink);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.78rem;
+            letter-spacing: 0.1em;
             text-decoration: none;
-            transition: color 0.3s ease;
-            border-bottom: 1px solid var(--accent);
-            padding-bottom: 2px;
+            color: var(--ink);
+            text-transform: uppercase;
+            transition: gap 0.3s;
+        }
+
+        .contact-link::before {
+            content: '→';
+            color: var(--mid);
+            transition: transform 0.3s;
         }
 
         .contact-link:hover {
-            color: var(--accent);
-            border-bottom-color: var(--ink);
+            gap: 1.25rem;
         }
 
-        /* Footer */
+        .contact-link:hover::before {
+            transform: translateX(4px);
+        }
+
+        /* ── FOOTER ── */
         footer {
-            padding: 3rem 0;
-            text-align: center;
-            font-size: 0.9rem;
-            color: #666;
-            opacity: 0;
-            animation: fadeIn 1.2s ease 0.9s forwards;
+            padding: 2rem 3rem;
+            border-top: 1px solid var(--light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+            color: var(--mid);
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 1.5rem;
+        /* ── ANIMATIONS ── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            nav {
+                padding: 1.25rem 1.5rem;
             }
 
-            header {
-                padding: 3rem 0 2rem;
-            }
-
-            .name {
-                font-size: 2.5rem;
-            }
-
-            nav ul {
+            .nav-links {
                 gap: 1.5rem;
+            }
+
+            .hero {
+                padding: 0 1.5rem 4rem;
+            }
+
+            .hero-scroll {
+                display: none;
             }
 
             section {
-                padding: 3rem 0;
+                padding: 5rem 1.5rem;
             }
 
-            .about-intro {
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+
+            .gallery-item:nth-child(n) {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 2;
+            }
+
+            #about {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 3rem;
             }
 
-            .headshot {
-                width: 150px;
-                height: 150px;
-                margin: 0 auto;
-                display: block;
+            .about-left {
                 position: static;
             }
 
-            .book-feature {
-                padding: 2rem 1.5rem;
+            .about-portrait {
+                aspect-ratio: 4/3;
+            }
+
+            .exhibition-item {
+                grid-template-columns: 60px 1fr;
+                gap: 1rem;
+            }
+
+            .exhibition-venue {
+                grid-column: 2;
+                text-align: left;
+                font-size: 0.75rem;
+            }
+
+            #contact {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 3rem;
+                min-height: auto;
             }
 
-            .book-cover {
-                max-width: 250px;
-                margin: 0 auto;
-            }
-
-            .research-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-info {
+            footer {
                 flex-direction: column;
-                gap: 1.5rem;
+                gap: 0.5rem;
+                text-align: center;
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item:nth-child(n) {
+                grid-column: span 1;
+            }
+
+            .about-details {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1 class="name">Dr. Joanne E. Gray</h1>
-            <p class="title">Digital Technology Policy & Governance</p>
-        </header>
 
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#book">New Book</a></li>
-                <li><a href="#research">Research</a></li>
-                <li><a href="#publications">Publications</a></li>
-                <li><a href="#contact">Contact</a></li>
+    <!-- NAV -->
+    <nav id="nav">
+        <a href="#" class="nav-name">Shari O'Dwyer</a>
+        <ul class="nav-links">
+            <li><a href="#work">Work</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#exhibitions">Exhibitions</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <p class="hero-eyebrow">Visual Artist — Painting &amp; Sculpture</p>
+        <h1 class="hero-name">Shari<br><em>O'Dwyer</em></h1>
+        <p class="hero-tagline">Works exploring materiality, memory, and the thresholds between the tangible and the ephemeral.</p>
+        <span class="hero-scroll">Scroll</span>
+    </section>
+
+    <!-- WORK -->
+    <section id="work">
+        <div class="gallery-header">
+            <p class="section-label">Selected Works</p>
+            <ul class="gallery-filters">
+                <li><button class="active">All</button></li>
+                <li><button>Painting</button></li>
+                <li><button>Sculpture</button></li>
+                <li><button>Mixed Media</button></li>
             </ul>
-        </nav>
+        </div>
 
-        <main>
-            <section id="about">
-                <div class="section-label">About</div>
-                <h2>The digital world is complex. I can help you make sense of it.</h2>
-                <div class="about-intro">
-                    <div class="about-text">
-                        <p>
-                            As a digital technology researcher, communicator, and educator, I empower individuals, organizations, and communities to understand and navigate the technologies reshaping modern life.
-                        </p>
-                        <p>
-                            I excel at making complex systems easy to understand—from social media and algorithms to artificial intelligence, virtual reality, and robotics. I work with clients to enhance digital knowledge and capabilities, enabling informed leadership, creating cultures of trust, and building resilience.
-                        </p>
-                    </div>
-                    <img src="headshot.jpg" alt="Dr. Joanne E. Gray" class="headshot">
+        <div class="gallery-grid">
+            <div class="gallery-item fade-up">
+                <div class="art-placeholder art-a"></div>
+                <div class="gallery-item-info">
+                    <p class="gallery-item-title">Sediment I</p>
+                    <p class="gallery-item-meta">Oil on linen · 2024 · 180 × 120 cm</p>
                 </div>
-                <p><strong>When you work with me you get:</strong></p>
-                <ul class="value-list">
-                    <li>Academic rigour combined with practical relevance</li>
-                    <li>Deep interdisciplinary expertise across law, policy, economics, media, and communication</li>
-                    <li>Clear, engaging communication for technical and non-technical audiences</li>
-                    <li>Experience working with government, industry, and civil society</li>
-                    <li>A trusted public voice on digital society issues</li>
-                </ul>
-                <h2 style="margin-top: 3rem;">Background</h2>
-                <p>
-                    I'm Chair of Discipline for Media & Communications at The University of Sydney and Editor-in-Chief of the Q1 journal <em>Policy & Internet</em>.
-                </p>
-                <p>
-                    I completed my doctoral thesis under the supervision of Professor Brian Fitzgerald, a pioneer of internet law in Australia, and my postdoctoral research fellowship with Professor Nicolas Suzor, a global leader in platform governance studies. In addition to my PhD, I hold a Master of International Law and Bachelor of Commerce (First Class Honours, Political Economy).
-                </p>
-                <p>
-                    For more about me visit <a href="https://www.linkedin.com/in/jograycy7" class="contact-link" target="_blank">LinkedIn →</a> or my <a href="https://www.sydney.edu.au/arts/about/our-people/academic-staff/j-gray.html" class="contact-link" target="_blank">University of Sydney profile →</a>
-                </p>
-            </section>
-
-            <section id="book">
-                <div class="section-label">New Book</div>
-                <div class="book-feature">
-                    <img src="book-cover.png" alt="Big Tech Dynasties book cover" class="book-cover">
-                    <div class="book-content">
-                        <h3>Big Tech Dynasties</h3>
-                        <p class="subtitle">Re-thinking the power, spectacle and downfall of Google, Apple, Microsoft, Meta and Amazon</p>
-                        <p>
-                            <em>Big Tech Dynasties</em> (Bloomsbury, 2026) offers a new way of understanding the power of Apple, Amazon, Google, Meta, and Microsoft. The book argues that while each company may be a product of platform capitalism, they are also historically familiar.
-                        </p>
-                        <p>
-                            Big Tech is familiar, because it is dynastic. And because it is dynastic, Big Tech is inherently undemocratic. <em>Big Tech Dynasties</em> considers how we arrived at this moment and the threat to democracy posed by concentrated private power. The book also explains how democracies are beginning—unevenly and imperfectly—to push back, drawing particular attention to Australia's emergence as an unlikely leader in democratic oversight of Big Tech.
-                        </p>
-                        <a href="https://www.bloomsbury.com" class="cta-button">Forthcoming 2026</a>
-                    </div>
+            </div>
+            <div class="gallery-item fade-up">
+                <div class="art-placeholder art-b"></div>
+                <div class="gallery-item-info">
+                    <p class="gallery-item-title">Threshold</p>
+                    <p class="gallery-item-meta">Marble &amp; cast bronze · 2024 · 60 × 40 × 30 cm</p>
                 </div>
-            </section>
-
-            <section id="research">
-                <div class="section-label">Research</div>
-                <h2>My research examines how digital platforms, algorithms, and emerging technologies shape power, governance, culture, and democracy.</h2>
-                <p>I focus on how law, policy, design, and economic structures interact—and on how public-interest governance can respond to concentrated digital power, online harms, and automated systems. My work combines legal analysis, political economy, media studies, and empirical digital research, and is widely cited in academic, policy, and public debates.</p>
-                <div class="research-grid">
-                    <div class="research-item">
-                        <h3>Platform Governance & Digital Regulation</h3>
-                        <p>Examining regulatory frameworks, democratic oversight, and accountability mechanisms for digital platforms and concentrated tech power.</p>
-                    </div>
-                    <div class="research-item">
-                        <h3>Artificial Intelligence & Automated Systems</h3>
-                        <p>Understanding the governance challenges posed by AI systems and developing public-interest approaches to algorithmic accountability.</p>
-                    </div>
-                    <div class="research-item">
-                        <h3>Online Harms, Safety & Misinformation</h3>
-                        <p>Analyzing the causes and responses to online harms, with attention to platform design, content moderation, and regulatory interventions.</p>
-                    </div>
-                    <div class="research-item">
-                        <h3>Virtual & Immersive Technologies</h3>
-                        <p>Exploring governance issues in VR/XR environments and the social implications of immersive digital spaces.</p>
-                    </div>
-                    <div class="research-item">
-                        <h3>Digital Sovereignty & Infrastructure</h3>
-                        <p>Examining questions of national autonomy, digital infrastructure, and the geopolitics of technology governance.</p>
-                    </div>
+            </div>
+            <div class="gallery-item fade-up">
+                <div class="art-placeholder art-c"></div>
+                <div class="gallery-item-info">
+                    <p class="gallery-item-title">Drift II</p>
+                    <p class="gallery-item-meta">Encaustic on panel · 2023 · 90 × 60 cm</p>
                 </div>
-            </section>
+            </div>
+            <div class="gallery-item fade-up">
+                <div class="art-placeholder art-d"></div>
+                <div class="gallery-item-info">
+                    <p class="gallery-item-title">After the Rain</p>
+                    <p class="gallery-item-meta">Mixed media · 2023 · 45 × 35 cm</p>
+                </div>
+            </div>
+            <div class="gallery-item fade-up">
+                <div class="art-placeholder art-e"></div>
+                <div class="gallery-item-info">
+                    <p class="gallery-item-title">Still Ground</p>
+                    <p class="gallery-item-meta">Oil on canvas · 2023 · 150 × 100 cm</p>
+                </div>
+            </div>
+            <div class="gallery-item fade-up">
+                <div class="art-placeholder art-f"></div>
+                <div class="gallery-item-info">
+                    <p class="gallery-item-title">Vessel No. 4</p>
+                    <p class="gallery-item-meta">Ceramic &amp; found material · 2022 · 55 × 20 × 20 cm</p>
+                </div>
+            </div>
+            <div class="gallery-item fade-up">
+                <div class="art-placeholder art-g"></div>
+                <div class="gallery-item-info">
+                    <p class="gallery-item-title">Sediment II</p>
+                    <p class="gallery-item-meta">Oil on linen · 2022 · 200 × 140 cm</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <section id="publications">
-                <div class="section-label">Publications</div>
-                <h2>Research & Writing</h2>
-                <p>
-                    My research has been published in leading academic journals and reaches diverse audiences through policy briefs, media commentary, and public scholarship. I combine rigorous academic analysis with accessible communication to inform public debate and policy development.
-                </p>
-                <p style="margin-top: 2rem;">
-                    For research publications visit <a href="https://scholar.google.com/citations?user=UfW7GFQAAAAJ&hl=en&authuser=1" class="contact-link" target="_blank">Google Scholar →</a>
-                </p>
-                <p>
-                    For commentary visit <a href="https://theconversation.com/profiles/joanne-gray-873764/articles" class="contact-link" target="_blank">The Conversation →</a>
-                </p>
-                <p>
-                    For general musings visit <a href="https://medium.com/@jograycy7" class="contact-link" target="_blank">Medium →</a>
-                </p>
-            </section>
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="about-left fade-up">
+            <img src="headshot.jpg" alt="Shari O'Dwyer in her studio" class="about-portrait">
+            <p class="about-caption">Studio, Sydney — 2024</p>
+        </div>
+        <div class="about-right">
+            <p class="section-label">About</p>
+            <h2>Making sense of the world through surface, weight, and time.</h2>
+            <p>Shari O'Dwyer is a Sydney-based visual artist whose practice spans painting, sculpture, and mixed-media installation. Her work investigates the material traces of experience — how memory, landscape, and the body leave marks on objects and surfaces.</p>
+            <p>Drawing on both European painterly traditions and the textures of the Australian environment, O'Dwyer's paintings are built through layered processes of application and erasure. Her sculptural work often incorporates found and natural materials, testing the boundary between the made and the found.</p>
+            <p>O'Dwyer holds a Bachelor of Fine Arts (First Class Honours) from the National Art School, Sydney, and a Master of Fine Arts from the Royal College of Art, London. Her work has been exhibited across Australia, the United Kingdom, and Europe.</p>
+            <div class="about-details">
+                <div>
+                    <p class="about-detail-label">Based in</p>
+                    <p class="about-detail-value">Sydney, Australia</p>
+                </div>
+                <div>
+                    <p class="about-detail-label">Education</p>
+                    <p class="about-detail-value">RCA, London / NAS, Sydney</p>
+                </div>
+                <div>
+                    <p class="about-detail-label">Practice</p>
+                    <p class="about-detail-value">Painting &amp; Sculpture</p>
+                </div>
+                <div>
+                    <p class="about-detail-label">Represented by</p>
+                    <p class="about-detail-value">Available on inquiry</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <section id="contact">
-                <div class="section-label">Contact</div>
-                <h2>Get in Touch</h2>
-                <p>
-                    Get in touch via <a href="mailto:jo@bordenmgmt.com" class="contact-link">jo@bordenmgmt.com</a>
-                </p>
-            </section>
-        </main>
+    <!-- EXHIBITIONS -->
+    <section id="exhibitions">
+        <p class="section-label">Exhibitions</p>
+        <ul class="exhibitions-list">
+            <li class="exhibition-item fade-up">
+                <span class="exhibition-year">2025</span>
+                <span class="exhibition-title">Between Ground and Air</span>
+                <span class="exhibition-venue">Chalk Horse Gallery, Sydney</span>
+            </li>
+            <li class="exhibition-item fade-up">
+                <span class="exhibition-year">2024</span>
+                <span class="exhibition-title">Sediment (Solo)</span>
+                <span class="exhibition-venue">Sullivan+Strumpf, Sydney</span>
+            </li>
+            <li class="exhibition-item fade-up">
+                <span class="exhibition-year">2024</span>
+                <span class="exhibition-title">Material Witness</span>
+                <span class="exhibition-venue">Saatchi Gallery, London</span>
+            </li>
+            <li class="exhibition-item fade-up">
+                <span class="exhibition-year">2023</span>
+                <span class="exhibition-title">New Australian Painting</span>
+                <span class="exhibition-venue">Museum of Contemporary Art, Sydney</span>
+            </li>
+            <li class="exhibition-item fade-up">
+                <span class="exhibition-year">2022</span>
+                <span class="exhibition-title">Threshold States</span>
+                <span class="exhibition-venue">RCA Galleries, London</span>
+            </li>
+            <li class="exhibition-item fade-up">
+                <span class="exhibition-year">2021</span>
+                <span class="exhibition-title">Degrees of Drift</span>
+                <span class="exhibition-venue">Nanda\Hobbs, Sydney</span>
+            </li>
+        </ul>
+    </section>
 
-        <footer>
-            <p>&copy; 2026 Dr. Joanne E. Gray. All rights reserved.</p>
-        </footer>
-    </div>
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="contact-left fade-up">
+            <h2>Let's<br><em>connect.</em></h2>
+        </div>
+        <div class="contact-right fade-up">
+            <p>For studio visits, commissions, exhibition inquiries, or press, please get in touch.</p>
+            <div class="contact-links">
+                <a href="mailto:studio@shariiodwyer.com" class="contact-link">studio@shariiodwyer.com</a>
+                <a href="https://www.instagram.com/" class="contact-link" target="_blank" rel="noopener">Instagram</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <span>&copy; 2026 Shari O'Dwyer</span>
+        <span>Sydney, Australia</span>
+    </footer>
+
+    <script>
+        // Nav scroll effect
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
+
+        // Fade-in on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, i * 80);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Gallery filter buttons (visual only — no actual filtering without real images)
+        document.querySelectorAll('.gallery-filters button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.gallery-filters button').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+    </script>
 </body>
 </html>
