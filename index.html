@@ -208,7 +208,7 @@ p {
 /* About section with headshot */
 .about-intro {
   display: grid;
-  grid-template-columns: 1fr 200px;
+  grid-template-columns: 1fr 220px;
   gap: 3rem;
   align-items: start;
   margin-bottom: 2rem;
@@ -219,11 +219,13 @@ p {
 }
 
 .headshot {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  aspect-ratio: 3/4;
+  border-radius: 2px;
   object-fit: cover;
-  border: 3px solid var(--accent);
+  object-position: center top;
   box-shadow: 0 4px 20px var(--shadow);
   position: sticky;
   top: 2rem;
@@ -409,7 +411,7 @@ footer {
   nav ul { gap: 1.5rem; }
   section { padding: 3rem 0; }
   .about-intro { grid-template-columns: 1fr; gap: 2rem; }
-  .headshot { width: 150px; height: 150px; margin: 0 auto; display: block; position: static; }
+  .headshot { width: 180px; max-width: 180px; margin: 0 auto; display: block; position: static; }
   .book-feature { padding: 2rem 1.5rem; grid-template-columns: 1fr; gap: 2rem; }
   .book-cover { max-width: 250px; margin: 0 auto; }
   .research-grid { grid-template-columns: 1fr; }
@@ -445,7 +447,7 @@ footer {
           <p>As a digital technology researcher, communicator, and educator, I empower individuals, organizations, and communities to understand and navigate the technologies reshaping modern life.</p>
           <p>I excel at making complex systems easy to understand—from social media and algorithms to artificial intelligence, virtual reality, and robotics. I work with clients to enhance digital knowledge and capabilities, enabling informed leadership, creating cultures of trust, and building resilience.</p>
         </div>
-        <img src="headshot.jpg" alt="Dr. Joanne E. Gray" class="headshot">
+        <img src="A7406008.jpg" alt="Dr. Joanne E. Gray" class="headshot">
       </div>
       <p><strong>When you work with me you get:</strong></p>
       <ul class="value-list">
@@ -468,9 +470,9 @@ footer {
         <div class="book-content">
           <h3>Big Tech Dynasties</h3>
           <p class="subtitle">Re-thinking the power, spectacle and downfall of Google, Apple, Microsoft, Meta and Amazon</p>
-          <p><em>Big Tech Dynasties</em> (Bloomsbury, 2026) offers a new way of understanding the power of Apple, Amazon, Google, Meta, and Microsoft. The book argues that while each company may be a product of platform capitalism, they are also historically familiar.</p>
+          <p><em>Big Tech Dynasties</em> (Bloomsbury, 2027) offers a new way of understanding the power of Apple, Amazon, Google, Meta, and Microsoft. The book argues that while each company may be a product of platform capitalism, they are also historically familiar.</p>
           <p>Big Tech is familiar, because it is dynastic. And because it is dynastic, Big Tech is inherently undemocratic. <em>Big Tech Dynasties</em> considers how we arrived at this moment and the threat to democracy posed by concentrated private power. The book also explains how democracies are beginning—unevenly and imperfectly—to push back, drawing particular attention to Australia's emergence as an unlikely leader in democratic oversight of Big Tech.</p>
-          <a href="https://www.bloomsbury.com" class="cta-button">Forthcoming 2026</a>
+          <a href="https://www.waterstones.com/book/big-tech-dynasties/joanne-e-gray//9798765137796" class="cta-button" target="_blank">Forthcoming 2027</a>
         </div>
       </div>
     </section>
