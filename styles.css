@@ -389,6 +389,34 @@ p {
   margin-bottom: 0;
 }
 
+/* Publications & impact (homepage) */
+.evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem 3rem;
+  margin: 2.5rem 0 1rem;
+}
+
+.evidence-block h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.evidence-list {
+  list-style: none;
+}
+
+.evidence-list li {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  padding-left: 1rem;
+  border-left: 1px solid var(--border);
+  margin-bottom: 1rem;
+}
+
 /* Contact */
 .contact-info {
   display: flex;
@@ -581,6 +609,7 @@ footer nav ul {
   .book-feature { padding: 2rem 1.5rem; grid-template-columns: 1fr; gap: 2rem; }
   .book-cover { max-width: 250px; margin: 0 auto; }
   .research-grid { grid-template-columns: 1fr; }
+  .evidence-grid { grid-template-columns: 1fr; gap: 2rem; }
   .contact-info { flex-direction: column; gap: 1.5rem; }
   .toc ol { columns: 1; }
   .cta-button.secondary { margin-left: 0; }
