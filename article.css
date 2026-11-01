@@ -1,0 +1,54 @@
+/* Joanne E. Gray: inner pages (book and research explainers).
+   Loaded after homepage.css, which supplies the shared tokens, header, buttons and footer.
+   Does not replace styles.css. */
+.nav-links a[aria-current="page"] { color: var(--sea); }
+
+.article-hero { padding: 92px 0 60px; border-bottom: 1px solid var(--border); }
+.article-narrow,
+.article-body { max-width: 800px; }
+.article-hero h1 { font-family: var(--serif); font-weight: normal; font-size: clamp(46px, 6vw, 78px); line-height: 1.04; letter-spacing: -.055em; margin: 26px 0 26px; }
+.lede { font-family: var(--serif); font-size: clamp(21px, 2.3vw, 27px); line-height: 1.45; letter-spacing: -.015em; color: var(--ink); max-width: 740px; margin-bottom: 0; }
+.byline { font-size: 13px; line-height: 1.7; color: var(--ink-muted); margin: 26px 0 0; }
+
+.article-body { padding: 16px 0 104px; }
+.article-body section { padding: 50px 0; border-bottom: 1px solid var(--border); }
+.article-body section:last-child { border-bottom: 0; }
+.article-body h2 { font-family: var(--serif); font-weight: normal; font-size: clamp(30px, 3.4vw, 42px); line-height: 1.16; letter-spacing: -.04em; margin: 0 0 22px; }
+.article-body h3 { font-family: var(--serif); font-weight: normal; font-size: 25px; letter-spacing: -.025em; margin: 34px 0 12px; }
+.article-body p,
+.article-body li,
+.article-body dd { font-size: 16.5px; line-height: 1.8; }
+.article-body p { margin: 0 0 18px; }
+.article-body ul,
+.article-body ol { padding-left: 22px; margin: 0 0 18px; }
+.article-body li { margin-bottom: 10px; }
+.article-body li::marker { color: var(--rust); }
+.article-body a { border-bottom: 1px solid var(--rust); transition: color .15s ease; }
+.article-body a:hover { color: var(--sea); }
+
+.article-body .toc { background: var(--white); border: 1px solid var(--border); padding: 30px 34px; margin-top: 44px; }
+.toc ol { columns: 2; column-gap: 44px; margin: 18px 0 0; }
+.toc li { break-inside: avoid; font-size: 15px; margin-bottom: 8px; }
+.toc a { border-bottom: 0; }
+.toc a:hover { border-bottom: 1px solid var(--rust); }
+
+.note { font-size: 14px !important; color: var(--ink-muted); border-left: 2px solid var(--rust); padding-left: 16px; }
+.article-body ul.publications { list-style: none; padding-left: 0; }
+.publications li { padding-left: 1.5em; text-indent: -1.5em; font-size: 15px; }
+
+.book-details { display: grid; grid-template-columns: max-content 1fr; gap: 12px 34px; margin: 0 0 24px; }
+.book-details dt { text-transform: uppercase; font-size: 10.5px; letter-spacing: .14em; font-weight: 800; color: var(--sea); padding-top: 6px; }
+.book-details dd { margin: 0; }
+
+.article-book .book-copy h1 { font-family: var(--serif); font-weight: normal; font-size: clamp(61px, 6.5vw, 92px); line-height: 1.04; letter-spacing: -.068em; margin: 28px 0; }
+
+@media (max-width: 700px) {
+  .article-hero { padding: 56px 0 44px; }
+  .article-body { padding-bottom: 72px; }
+  .article-body section { padding: 40px 0; }
+  .article-body .toc { padding: 24px 22px; }
+  .toc ol { columns: 1; }
+  .book-details { grid-template-columns: 1fr; gap: 2px; }
+  .book-details dd { margin-bottom: 12px; }
+  .article-book .book-copy h1 { font-size: clamp(57px, 14vw, 83px); }
+}
