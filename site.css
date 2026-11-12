@@ -184,3 +184,9 @@ footer .c4 { text-align: right; }
 @media (max-width: 860px) {
   .book-hero .cover { max-width: 150px; margin-bottom: 20px; }
 }
+
+/* v4: homepage menu on narrow screens */
+.homenav a { white-space: nowrap; }
+@media (max-width: 860px) {
+  .bigname .homenav { flex-wrap: wrap; justify-content: flex-start; gap: 10px 22px; }
+}
