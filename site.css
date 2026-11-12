@@ -167,3 +167,20 @@ footer .c4 { text-align: right; }
   footer .c4 { text-align: left; }
 }
 @media (prefers-reduced-motion: no-preference) { a, .btn { transition: color .12s, background-color .12s; } }
+
+/* v3 fixes */
+.bigname .homenav { position: relative; z-index: 2; }
+.book-hero { background: transparent; color: var(--ink); border-top: 1px solid var(--line); padding-top: clamp(24px, 3vw, 40px); padding-bottom: clamp(24px, 3vw, 40px); }
+.book-hero h1 { font-size: clamp(44px, 5.6vw, 96px); margin-bottom: 16px; }
+.book-hero .subtitle { font-size: clamp(18px, 1.4vw, 22px); margin-bottom: 16px; }
+.book-hero .btn { background: var(--ink); color: var(--paper); }
+.book-hero .btn:hover { background: var(--red); color: var(--paper); }
+.book-hero a:hover { color: var(--red); }
+.book-hero .cover img { box-shadow: 0 1px 0 var(--line); }
+@media (min-width: 861px) {
+  .book-hero .cover { grid-column: 1 / span 2; }
+  .book-hero .copy { grid-column: 4 / span 8; }
+}
+@media (max-width: 860px) {
+  .book-hero .cover { max-width: 150px; margin-bottom: 20px; }
+}
